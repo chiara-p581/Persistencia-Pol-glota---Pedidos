@@ -102,3 +102,9 @@ CREATE TABLE IF NOT EXISTS pedidos.eventosUsuario (
 - Redis en localhost:6379
 
 5. Finalmente, ejecutá el proyecto desde tu IDE (por ejemplo IntelliJ o Eclipse) corriendo la clase DemoApplication.java.
+
+---
+## 👩‍💻 Autores
+- Chiara Prevosti
+- Juelieta Pujol
+- Agostina Bernard
