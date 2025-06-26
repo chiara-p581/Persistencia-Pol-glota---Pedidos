@@ -1,0 +1,57 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - backend
+
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra-db
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=MiCluster
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_RACK=rack1
+    networks:
+      - backend
+
+  redis:
+    image: redis:7
+    container_name: redis-db
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - backend
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-db
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=TuPasswordSegura123
+    networks:
+      - backend
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  mongo-data:
+  cassandra-data:
+  redis-data:
+  sqlserver-data:
+
+networks:
+  backend:
+    driver: bridge
